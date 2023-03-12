@@ -10,7 +10,7 @@ const titles = [
     'Здам гараж',
 ];
 
-const price = {
+const prices = {
     min:1000,
     max:5000,
 };
@@ -25,7 +25,7 @@ const guests = {
     max:10,
 };
 
-const checkTime = [
+const checkTimes = [
     '12:00',
     '13:00',
     '14:00',
@@ -47,7 +47,7 @@ const types = [
     'bungalow'
 ];
 
-const description = [
+const descriptions = [
     'Відстань від готелю до пляжу становить 1,9 км, а до залізничного вокзалу- 6,6 км. Відстань до міжнародного аеропорту становить 6 км.',
     'Центр культури і мистецтва знаходиться в 1,9 км від апартаментів. Відстань до міжнародного аеропорту 16 км.',
     'Парам особливо подобається розташування — вони оцінили проживання в цьому районі для поїздки вдвоє на 8,5.',
@@ -84,14 +84,14 @@ const createOffer = () => {
         offer:{
             title:getRandomElement(titles),
             address:location(),
-            price:getRandomNumber(price.min, price.max),
+            price:getRandomNumber(prices.min, prices.max),
             type:getRandomElement(types),
             rooms:getRandomNumber(rooms.min, rooms.max),
             guests:getRandomNumber(guests.min, guests.max),
-            checkin:getRandomElement(checkTime),
-            checkout:getRandomElement(checkTime),
+            checkin:getRandomElement(checkTimes),
+            checkout:getRandomElement(checkTimes),
             features:getRandomElement(features),
-            description:getRandomElement(description),
+            description:getRandomElement(descriptions),
             photos:getRandomElement(photos),
             location:location(),
         }
