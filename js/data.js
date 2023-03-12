@@ -69,7 +69,7 @@ const startLocation = {
 
 const digits = 5;
 
-const location = () => {
+const locations = () => {
     return {
         x:getRandomFloat(...startLocation.x, digits),
         y:getRandomFloat(...startLocation.y, digits),
@@ -77,13 +77,14 @@ const location = () => {
 }
 
 const createOffer = () => {
+    const location = locations();
     return {
         author:{
             avatar:`img/avatars/user0${getRandomNumber(1, 8)}.png`,
         },
         offer:{
             title:getRandomElement(titles),
-            address:location(),
+            address:location,
             price:getRandomNumber(prices.min, prices.max),
             type:getRandomElement(types),
             rooms:getRandomNumber(rooms.min, rooms.max),
@@ -93,7 +94,7 @@ const createOffer = () => {
             features:getRandomElement(features),
             description:getRandomElement(descriptions),
             photos:getRandomElement(photos),
-            location:location(),
+            location:location,
         }
     }
 }
