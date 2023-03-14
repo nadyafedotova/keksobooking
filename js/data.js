@@ -1,5 +1,5 @@
-import { getRandomElement, getRandomFloat, getRandomNumber } from './utils.js';
-import { checkTimes, countOffers, descriptions, digits, features, guests, photos, prices, rooms, startLocation, titles, types } from './constans.js'
+import { getRandomElement, getRandomFeatures, getRandomFloat, getRandomNumber } from './utils.js';
+import { checkTimes, countOffers, descriptions, digits, guests, photos, prices, rooms, startLocation, titles, types } from './constans.js';
 
 const locations = () => {
     return {
@@ -16,19 +16,18 @@ const createOffer = () => {
         },
         offer:{
             title:getRandomElement(titles),
-            address:location,
+            address:location.x + ', ' + location.y,
             price:getRandomNumber(prices.min, prices.max),
             type:getRandomElement(types),
             rooms:getRandomNumber(rooms.min, rooms.max),
             guests:getRandomNumber(guests.min, guests.max),
             checkin:getRandomElement(checkTimes),
             checkout:getRandomElement(checkTimes),
-            features:getRandomElement(features),
+            features:getRandomFeatures(),
             description:getRandomElement(descriptions),
-            photos:getRandomElement(photos),
+            photos:photos,
             location:location,
         }
     }
 }
-
 export const similarOffers = new Array(countOffers).fill(null).map(() => createOffer());
