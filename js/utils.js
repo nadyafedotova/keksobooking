@@ -1,3 +1,5 @@
+import { features } from './constans.js';
+
 export const getRandomNumber = (min, max) => {
     let minValue = Math.ceil(min);
     let maxValue = Math.ceil(max);
@@ -11,3 +13,5 @@ export const getRandomFloat = (rangeMin, rangeMax, digits = 1) => {
     const maxValue = Math.max(Math.abs(rangeMin), Math.abs(rangeMax));
     return (minValue + Math.random() * (maxValue + 1 - maxValue)).toFixed(digits);
 };
+
+export const getRandomFeatures = () => features.slice(getRandomNumber(0, features.length-1));
