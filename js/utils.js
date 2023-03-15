@@ -14,4 +14,4 @@ export const getRandomFloat = (rangeMin, rangeMax, digits = 1) => {
     return (minValue + Math.random() * (maxValue + 1 - maxValue)).toFixed(digits);
 };
 
-export const getRandomFeatures = () => features.slice(getRandomNumber(0, features.length));
+export const getRandomFeatures = () => features.slice(getRandomNumber(0, features.length-1));

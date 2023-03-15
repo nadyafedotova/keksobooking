@@ -11,21 +11,32 @@ export const getPopup = (data) => {
         cardElement.querySelector('.popup__text--capacity').textContent = `${item.offer.rooms} кімнати для ${item.offer.guests} гостей`;
         cardElement.querySelector('.popup__text--time').textContent = `Заїзд після ${item.offer.checkin}, виїзд до ${item.offer.checkout}`;
         cardElement.querySelector('.popup__text--price').textContent = item.offer.price;
-        cardElement.querySelectorAll('.popup__feature').forEach((featureListItem) => {
-            const isNecessary = item.offer.features.some((feature) => featureListItem.classList.contains(`popup__feature--${feature}`));
-            if (!isNecessary) featureListItem.remove();
-        });
-
-        item.offer.features.forEach((feature) =>  cardElement.querySelector(`.popup__feature--${feature}`).textContent = feature)
+        features(item.offer.features, cardElement);
         cardElement.querySelector('.popup__description').textContent = item.offer.description;
-        const popupPhotosElement = cardElement.querySelector('.popup__photos');
-        const popupPhotoElement = popupPhotosElement.querySelector('.popup__photo');
-        item.offer.photos.forEach((photo) => {
-            const item = popupPhotoElement.cloneNode(true);
-            item.src = photo;
-            cardElement.querySelector(".popup__photos").append(item);
-        });
+        photos(item.offer.photos, cardElement);
         fragment.appendChild(cardElement);
     })
     cardTemplate.appendChild(fragment);
+}
+
+const features = (features, cardElement) => {
+    cardElement.querySelectorAll('.popup__feature').forEach((featureListItem) => {
+        const isNecessary = features.some((feature) => featureListItem.classList.contains(`popup__feature--${feature}`));
+        if (!isNecessary) featureListItem.remove();
+    });
+    feature(features, cardElement);
+}
+
+const feature = (features, cardElement) => {
+    features.forEach((feature) =>  cardElement.querySelector(`.popup__feature--${feature}`).textContent = feature)
+}
+const photos = (photos, cardElement) => {
+    const popupPhotosElement = cardElement.querySelector('.popup__photos');
+    const popupPhotoElement = popupPhotosElement.querySelector('.popup__photo');
+    popupPhotoElement.remove();
+    photos.forEach((photo) => {
+        const item = popupPhotoElement.cloneNode(true);
+        item.src = photo;
+        cardElement.querySelector(".popup__photos").append(item);
+    });
 }

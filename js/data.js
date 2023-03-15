@@ -18,7 +18,7 @@ const createOffer = () => {
             title:getRandomElement(titles),
             address:location.x + ', ' + location.y,
             price:getRandomNumber(prices.min, prices.max),
-            type:getRandomElement(types),
+            type:getRandomElement(Object.values(types)),
             rooms:getRandomNumber(rooms.min, rooms.max),
             guests:getRandomNumber(guests.min, guests.max),
             checkin:getRandomElement(checkTimes),
