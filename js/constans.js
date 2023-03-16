@@ -66,3 +66,10 @@ export const startLocation = {
 };
 
 export const digits = 5;
+
+export const typePrice = {
+    bungalow: 0,
+    flat: 1000,
+    house: 5000,
+    palace: 10000
+};
