@@ -1,5 +1,2 @@
-import { similarOffers } from './data.js';
-import { getPopup } from './popup.js';
+import './map.js';
 import './form.js';
-
-getPopup(similarOffers)
