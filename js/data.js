@@ -10,6 +10,7 @@ const locations = () => {
 
 const createOffer = () => {
     const location = locations();
+    const checkTime = getRandomElement(checkTimes)
     return {
         author:{
             avatar:`img/avatars/user0${getRandomNumber(1, 8)}.png`,
@@ -21,8 +22,8 @@ const createOffer = () => {
             type:getRandomElement(Object.values(types)),
             rooms:getRandomNumber(rooms.min, rooms.max),
             guests:getRandomNumber(guests.min, guests.max),
-            checkin:getRandomElement(checkTimes),
-            checkout:getRandomElement(checkTimes),
+            checkin:checkTime,
+            checkout:checkTime,
             features:getRandomFeatures(),
             description:getRandomElement(descriptions),
             photos:photos,

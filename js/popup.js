@@ -8,7 +8,7 @@ export const getPopup = ({ offer, author }) => {
     cardElement.querySelector('.popup__type').textContent = offer.type;
     cardElement.querySelector('.popup__text--capacity').textContent = `${offer.rooms} кімнати для ${offer.guests} гостей`;
     cardElement.querySelector('.popup__text--time').textContent = `Заїзд після ${offer.checkin}, виїзд до ${offer.checkout}`;
-    cardElement.querySelector('.popup__text--price').textContent = offer.price;
+    cardElement.querySelector('.popup__text--price').textContent = `${offer.price} ₴/нічь`;
     features(offer.features, cardElement);
     cardElement.querySelector('.popup__description').textContent = offer.description;
     photos(offer.photos, cardElement);
