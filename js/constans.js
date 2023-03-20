@@ -80,3 +80,10 @@ export const mainLocation = {
 };
 
 export const mapScaling = 11;
+
+export const roomsGuests = {
+    '1': ['1'],
+    '2': ['2', '1'],
+    '3': ['3', '2', '1'],
+    '100': ['0'],
+};

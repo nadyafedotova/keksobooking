@@ -95,11 +95,11 @@
             </fieldset>
             <fieldset class="ad-form__element ad-form__element--wide">
                 <label class="ad-form__label" for="title">Заголовок оголошення</label>
-                <input id="title" name="title" type="text" placeholder="Мила, затишна квартирка в центрі Токіо">
+                <input id="title" name="title" type="text" placeholder="Мила, затишна квартирка в центрі Токіо" minlength="30" maxlength="100" data-pristine-minlength-message="Від 30 до 100 символів" required data-pristine-required-message="Обов'язкове поле">
             </fieldset>
             <fieldset class="ad-form__element ad-form__element--wide">
                 <label class="ad-form__label" for="address">Адреса (кординати)</label>
-                <input id="address" name="address" type="text">
+                <input id="address" name="address" type="text" readonly>
             </fieldset>
             <fieldset class="ad-form__element">
                 <label class="ad-form__label" for="type">Тип житла</label>
@@ -112,7 +112,7 @@
             </fieldset>
             <fieldset class="ad-form__element">
                 <label class="ad-form__label" for="price">Ціна за ніч, грн.</label>
-                <input id="price" name="price" type="number" placeholder="5000">
+                <input id="price" name="price" type="number" placeholder="5000" data-pristine-max-message="Максимальна ціна за ніч 100 000" step="100" required data-pristine-required-message="Обов'язкове числове поле">
             </fieldset>
             <fieldset class="ad-form__element ad-form__element--time">
                 <label class="ad-form__label" for="timein">Час заїзду та виїзду</label>
