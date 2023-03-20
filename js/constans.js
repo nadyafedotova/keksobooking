@@ -39,10 +39,10 @@ export const features = [
 ];
 
 export const types = {
-    flat: 'Квартира',
-    bungalow: 'Бунгало',
-    house: 'Будинок',
-    palace: 'Палац'
+    flat:'Квартира',
+    bungalow:'Бунгало',
+    house:'Будинок',
+    palace:'Палац'
 }
 
 export const descriptions = [
@@ -66,3 +66,17 @@ export const startLocation = {
 };
 
 export const digits = 5;
+
+export const typePrice = {
+    bungalow:0,
+    flat:1000,
+    house:5000,
+    palace:10000
+};
+
+export const mainLocation = {
+    lat:35.675178,
+    lng:139.748876,
+};
+
+export const mapScaling = 11;

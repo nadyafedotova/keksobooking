@@ -9,9 +9,7 @@ export const getRandomNumber = (min, max) => {
 export const getRandomElement = (arr) => arr[getRandomNumber(0, arr.length - 1)];
 
 export const getRandomFloat = (rangeMin, rangeMax, digits = 1) => {
-    const minValue = Math.min(Math.abs(rangeMin), Math.abs(rangeMax));
-    const maxValue = Math.max(Math.abs(rangeMin), Math.abs(rangeMax));
-    return (minValue + Math.random() * (maxValue + 1 - maxValue)).toFixed(digits);
+    return (Math.random() * (rangeMax - rangeMin) + rangeMin).toFixed(digits);
 };
 
-export const getRandomFeatures = () => features.slice(getRandomNumber(0, features.length-1));
+export const getRandomFeatures = () => features.slice(getRandomNumber(0, features.length - 1));
