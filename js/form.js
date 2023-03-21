@@ -1,3 +1,6 @@
-import { pristine } from './validation.js';
+import { form, pristine } from './validation.js';
 
-pristine.validate();
+form.addEventListener('submit', (evt) => {
+    evt.preventDefault();
+    pristine.validate();
+});

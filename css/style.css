@@ -123,6 +123,7 @@ fieldset {
 
 .map__filters--disabled {
     opacity: 0.5;
+    pointer-events: none;
 }
 
 .map__filter {
@@ -266,6 +267,7 @@ fieldset {
 
 .ad-form--disabled {
     opacity: 0.3;
+    pointer-events: none;
 }
 
 .ad-form-header {
@@ -1025,4 +1027,11 @@ fieldset {
 
 .hidden {
     display: none;
+}
+
+.ad-form__error {
+    color: #dc1d34;
+    display: block;
+    margin-top: 5px;
+    font-size: 11px;
 }

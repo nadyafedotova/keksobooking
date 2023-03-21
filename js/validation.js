@@ -1,5 +1,5 @@
-import { typePrice } from './constans.js';
-const form = document.querySelector('.ad-form');
+import { roomsGuests, typePrice } from './constans.js';
+export const form = document.querySelector('.ad-form');
 export const price = document.querySelector('#price');
 
 const type = document.querySelector('#type');
@@ -19,14 +19,19 @@ export const pristine = window.Pristine(form, {
 });
 
 const validatePrice = (value) => value >= typePrice[type.value];
-pristine.addValidator(price, validatePrice,);
-
+const getTypeErrorMessage = () => `Мінімальна ціна за ніч: ${typePrice[type.value]}`;
+pristine.addValidator(price, validatePrice, getTypeErrorMessage);
 const onTypeChange = () => {
     price.min = typePrice[type.value];
     price.placeholder = typePrice[type.value];
     if (price.value) pristine.validate(price);
 };
 type.addEventListener('change', onTypeChange);
+
+const getRoomsErrorMessage = () => `Виберіть іншу кількість гостей!<br> 
+        Для ${roomNumber.value} кімнат(и) кількість місць для ${roomsGuests[roomNumber.value]} гостя(ей)`;
+const validateRooms = () => roomsGuests[roomNumber.value].includes(capacity.value);
+pristine.addValidator(capacity, validateRooms, getRoomsErrorMessage);
 roomNumber.addEventListener('change', () => pristine.validate(capacity));
 
 const onTimeInOutChange = (evt) => timeIn.value = timeOut.value = evt.target.value;
