@@ -82,8 +82,19 @@ export const mainLocation = {
 export const mapScaling = 11;
 
 export const roomsGuests = {
-    '1': ['1'],
-    '2': ['2', '1'],
-    '3': ['3', '2', '1'],
-    '100': ['0'],
+    '1':['1'],
+    '2':['2', '1'],
+    '3':['3', '2', '1'],
+    '100':['0'],
 };
+
+export const urls = {
+    get:'http://localhost:3000/offers',
+    post:'http://localhost:3000/offer',
+};
+
+export const messages = {
+    getDataErr:'Не вдалося отримати дані з серверу',
+};
+
+export const zero = 0;

@@ -31,9 +31,13 @@ const photos = (photos, cardElement) => {
     const popupPhotosElement = cardElement.querySelector('.popup__photos');
     const popupPhotoElement = popupPhotosElement.querySelector('.popup__photo');
     popupPhotoElement.remove();
-    photos.forEach((photo) => {
-        const item = popupPhotoElement.cloneNode(true);
-        item.src = photo;
-        cardElement.querySelector('.popup__photos').append(item);
-    });
+    if (photos.length>0) {
+        photos.forEach((photo) => {
+            const item = popupPhotoElement.cloneNode(true);
+            item.src = photo;
+            cardElement.querySelector('.popup__photos').append(item);
+        });
+    } else {
+        return;
+    }
 }
