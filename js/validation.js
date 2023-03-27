@@ -9,6 +9,11 @@ const timeIn = document.querySelector('#timein');
 const timeOut = document.querySelector('#timeout');
 const timeInOut = document.querySelector('.ad-form__element--time');
 
+const typeValue = type.options[type.selectedIndex].value;
+price.min = typePrice[typeValue];
+price.placeholder = typePrice[typeValue];
+capacity.value = roomsGuests[roomNumber.options[roomNumber.selectedIndex].value].toString();
+
 export const pristine = window.Pristine(form, {
     classTo:'ad-form__element',
     errorClass:'ad-form__item--invalid',

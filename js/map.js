@@ -1,9 +1,14 @@
 import { getPopup } from './popup.js';
 import { disableForm, disableMapFilters } from './form_switcher.js';
-import { digits, mapScaling, mainLocation } from './constans.js';
-import { similarOffers } from './data.js';
+import { digits, mapScaling, mainLocation, messages, countOffers, zero, timeOutDelay } from './constans.js';
+import { data } from './api.js';
+import { error } from './load_error.js';
+import { checkAllFilters } from './filter.js';
+import { debounce } from './utils.js';
+import { filterForm } from './form.js';
 
-const mainPinLocation = document.querySelector('#address');
+const dataArr = [];
+export const mainPinLocation = document.querySelector('#address');
 
 const mainPinIcon = L.icon({
     iconUrl:'./img/main-pin.svg',
@@ -17,7 +22,7 @@ const similarPinIcon = L.icon({
     iconAnchor:[20, 40],
 });
 
-const getLocationToString = (obj, number) => {
+export const getLocationToString = (obj, number) => {
     let { lat, lng } = obj;
     lat = +(lat.toFixed(number));
     lng = +(lng.toFixed(number));
@@ -48,7 +53,7 @@ mainPinMarker.on('moveend', (evt) => mainPinLocation.value = getLocationToString
 
 const markerGroup = L.layerGroup().addTo(map);
 
-const createMarker = (ad) => {
+export const createMarker = (ad) => {
     const marker = L.marker(
         {
             lat:ad.offer.location.x,
@@ -61,9 +66,26 @@ const createMarker = (ad) => {
         .bindPopup(getPopup(ad));
 };
 
-(() => {
-    similarOffers.forEach((ad) => {
+export const resetMainPinMarker = () => {
+    mainPinMarker.setLatLng(mainLocation);
+    map.setView(mainLocation, mapScaling);
+    map.closePopup();
+};
+
+(async () => {
+    const fetchData = await data(() => error(`${messages.getDataErr}`));
+    dataArr.push(...fetchData);
+    dataArr.slice(zero, countOffers).forEach((ad) => {
         createMarker(ad);
         disableMapFilters(false);
     });
 })();
+
+export const filterAd = () => {
+    markerGroup.clearLayers();
+    const filterAds = dataArr.filter((ad) => checkAllFilters(ad));
+    filterAds.slice(zero, countOffers).forEach((ad) => createMarker(ad));
+    if (filterAds.length <= 0) error(`${messages.findDataErr}`);
+};
+
+filterForm.addEventListener('change', debounce(filterAd, timeOutDelay));
