@@ -1,8 +1,11 @@
 import { getPopup } from './popup.js';
 import { disableForm, disableMapFilters } from './form_switcher.js';
-import { digits, mapScaling, mainLocation, messages, countOffers, zero } from './constans.js';
+import { digits, mapScaling, mainLocation, messages, countOffers, zero, timeOutDelay } from './constans.js';
 import { data } from './api.js';
 import { error } from './load_error.js';
+import { checkAllFilters } from './filter.js';
+import { debounce } from './utils.js';
+import { filterForm } from './form.js';
 
 const dataArr = [];
 export const mainPinLocation = document.querySelector('#address');
@@ -77,3 +80,12 @@ export const resetMainPinMarker = () => {
         disableMapFilters(false);
     });
 })();
+
+export const filterAd = () => {
+    markerGroup.clearLayers();
+    const filterAds = dataArr.filter((ad) => checkAllFilters(ad));
+    filterAds.slice(zero, countOffers).forEach((ad) => createMarker(ad));
+    if (filterAds.length <= 0) error(`${messages.findDataErr}`);
+};
+
+filterForm.addEventListener('change', debounce(filterAd, timeOutDelay));

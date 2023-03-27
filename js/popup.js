@@ -1,3 +1,5 @@
+import { types } from './constans.js';
+
 const cardTemplate = document.querySelector('#card').content.querySelector('.popup');
 
 export const getPopup = ({ offer, author }) => {
@@ -5,7 +7,7 @@ export const getPopup = ({ offer, author }) => {
     cardElement.querySelector('.popup__avatar').src = author.avatar;
     cardElement.querySelector('.popup__title').textContent = offer.title;
     cardElement.querySelector('.popup__text--address').textContent = offer.address;
-    cardElement.querySelector('.popup__type').textContent = offer.type;
+    cardElement.querySelector('.popup__type').textContent = types[offer.type];
     cardElement.querySelector('.popup__text--capacity').textContent = `${offer.rooms} кімнати для ${offer.guests} гостей`;
     cardElement.querySelector('.popup__text--time').textContent = `Заїзд після ${offer.checkin}, виїзд до ${offer.checkout}`;
     cardElement.querySelector('.popup__text--price').textContent = `${offer.price} ₴/нічь`;
@@ -31,7 +33,7 @@ const photos = (photos, cardElement) => {
     const popupPhotosElement = cardElement.querySelector('.popup__photos');
     const popupPhotoElement = popupPhotosElement.querySelector('.popup__photo');
     popupPhotoElement.remove();
-    if (photos.length>0) {
+    if (photos.length > 0) {
         photos.forEach((photo) => {
             const item = popupPhotoElement.cloneNode(true);
             item.src = photo;
