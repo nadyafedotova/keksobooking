@@ -122,3 +122,5 @@ export const priceRanges = {
 };
 
 export const defaultValue = 'any';
+
+export const defaultAvatar = 'img/muffin-grey.svg';

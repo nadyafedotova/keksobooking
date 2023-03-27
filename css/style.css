@@ -1035,3 +1035,9 @@ fieldset {
     margin-top: 5px;
     font-size: 11px;
 }
+
+.ad-form__photo img {
+    width: 70px;
+    height: 70px;
+    object-fit: contain;
+}

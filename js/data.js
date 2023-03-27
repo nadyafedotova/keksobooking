@@ -1,10 +1,10 @@
 import { typePrice } from './constans.js';
 
 export const createOffer = (data) => {
-    const loc = data.address.split(',')
+    const loc = data.address.split(',');
     return {
         author:{
-            avatar:{},
+            avatar:data.avatar,
         },
         offer:{
             title:data.title,
@@ -17,8 +17,8 @@ export const createOffer = (data) => {
             checkout:data.timeout,
             features:data.features,
             description:data.description,
-            photos:{},
-            location:{ x:loc[0], y:loc[1]}
+            photos:data.photos,
+            location:{ x:loc[0], y:loc[1] }
         }
     }
 }
