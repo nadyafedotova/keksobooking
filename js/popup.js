@@ -39,7 +39,5 @@ const photos = (photos, cardElement) => {
             item.src = photo;
             cardElement.querySelector('.popup__photos').append(item);
         });
-    } else {
-        return;
-    }
+    } else return {};
 }
