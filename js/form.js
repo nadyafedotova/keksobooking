@@ -4,6 +4,7 @@ import { filterAd, getLocationToString, mainPinLocation, resetMainPinMarker } fr
 import { digits, mainLocation } from './constans.js';
 import { message } from './send_errors.js';
 import { createOffer } from './data.js';
+import { resetPhotos } from './utils.js';
 
 const submitButton = document.querySelector('.ad-form__submit');
 const resetButton = document.querySelector('.ad-form__reset');
@@ -17,6 +18,7 @@ const resetForm = (evt) => {
     form.reset();
     filterForm.reset();
     filterAd();
+    resetPhotos();
     mainPinLocation.value = getLocationToString(mainLocation, digits);
     resetMainPinMarker();
 };
